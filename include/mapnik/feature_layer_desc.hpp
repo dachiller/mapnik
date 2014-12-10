@@ -39,12 +39,14 @@ public:
     layer_descriptor(std::string const& name, std::string const& encoding)
         : name_(name),
           encoding_(encoding),
-          desc_ar_() {}
+          desc_ar_(),
+          srs_() {}
 
     layer_descriptor(layer_descriptor const& other)
         : name_(other.name_),
           encoding_(other.encoding_),
-          desc_ar_(other.desc_ar_) {}
+          desc_ar_(other.desc_ar_),
+          srs_(other.srs_) {}
 
     void set_name(std::string const& name)
     {
@@ -54,6 +56,16 @@ public:
     std::string const& get_name() const
     {
         return name_;
+    }
+
+    void set_srs(std::string const& srs)
+    {
+        srs_ = srs;
+    }
+
+    std::string const& get_srs() const
+    {
+        return srs_;
     }
 
     void set_encoding(std::string const& encoding)
@@ -85,6 +97,7 @@ private:
     std::string name_;
     std::string encoding_;
     std::vector<attribute_descriptor> desc_ar_;
+    std::string srs_;
 };
 
 }
